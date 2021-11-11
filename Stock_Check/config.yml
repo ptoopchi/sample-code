@@ -1,0 +1,13 @@
+stores: 
+  - name: company_1 # The process below is repeated for each website
+    add_to_basket_button_id: XPATH_HERE
+    headless: True
+    basket_page_url: Basket_URL_HERE
+    price: XPATH_HERE
+    link: [LINK_ARRAY_HERE]
+  - name: company_2 
+    add_to_basket_button_id: XPATH_HERE
+    headless: False
+    basket_page_url: Basket_URL_HERE
+    price: XPATH_HERE
+    link: [LINK_ARRAY_HERE]
