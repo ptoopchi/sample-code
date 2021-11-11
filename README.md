@@ -1,2 +1,3 @@
 # Pouria Toopchi's Sample Code
-This Repository shows some of the code that I have done throughout my BSc Computer Science Degree and my MSc Artificial Intelligence Degree
+Above is an sample of coding that I have done over the years. It includes sample code from a Negotiation Agent, price checker and .....
+
