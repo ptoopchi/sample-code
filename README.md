@@ -1,3 +1,2 @@
 # Pouria Toopchi's Sample Code
-Above is an sample of coding that I have done over the years. It includes sample code from a Negotiation Agent, price checker and .....
-
+I am currently on the search for a Machine Learning Engineer/Data Scientist role. Above I have composed some sample code to showcase my coding ability.
