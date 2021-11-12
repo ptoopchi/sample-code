@@ -193,10 +193,9 @@ def main():
 
 # Run Script
 if __name__ == "__main__":
+    # Run before schedule is executed
     main()
-    # Get current time
-    d = datetime.datetime.now()
-    # Depending on time there is a diferent time scedule that needs to be ran
+    # Run main() every 5 minutes
     schedule.every(5).minutes.do(main)
         
     while True:
