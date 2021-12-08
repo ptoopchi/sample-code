@@ -8,8 +8,8 @@ from user_CF import userBased_CF
 
 # Get data from csv file
 def get_data():
-    df_movies = pd.read_csv('/Users/pouriatoopchi/Documents/Github_Sample_Upload/Local_path/Recommendation_System/data/movies.csv')
-    df_ratings = pd.read_csv('/Users/pouriatoopchi/Documents/Github_Sample_Upload/Local_path/Recommendation_System/data/ratings.csv')
+    df_movies = pd.read_csv('data/movies.csv')
+    df_ratings = pd.read_csv('data/ratings.csv')
     # Currently not required
     del df_movies['genres']
     del df_ratings['timestamp']
