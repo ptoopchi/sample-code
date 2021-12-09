@@ -1,1 +1,3 @@
 This Folder contains the file for a two-input neural network, where the first input is based on word embeddings from text data, while the second input is based on features engineered from the dataset. A diagram of this is shown below. Each input undergoes its own layers until it is concatenated and passed through a dense layer before returning an output.
+
+There is also a folder "python_scripts" that contains the same network but in standard python script.
