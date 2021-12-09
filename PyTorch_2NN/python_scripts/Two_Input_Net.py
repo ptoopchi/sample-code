@@ -12,7 +12,7 @@ class Two_Input_Net(nn.Module):
         self.embedding.weight.requires_grad = False
 
         # Layer 1b: Bidirectional LSTM
-        self.lstm = nn.LSTM(pretrained_embedding_dim, maxlen, bidirectional=True)
+        self.lstm = nn.LSTM(pretrained_embedding_dim, maxlen, bidirectional=True, batch_first=True)
 
         # Layer 1c: MaxPooling, BatchNormalisation and Dropout
         self.globalMaxPool = nn.AdaptiveMaxPool1d(1)
