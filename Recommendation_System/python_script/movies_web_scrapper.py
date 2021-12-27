@@ -6,10 +6,10 @@ from difflib import SequenceMatcher
 import sys
 import json
 
-# This class Scraps the TMDB website for more information about each movie within the dataset
+# This class Scrapes the TMDB website for more information about each movie within the dataset
 # out of the 1500 movies only 18 of them are not on the site so they are added to the dataset manually
 
-class movie_scrap:
+class movie_scrape:
     def __init__(self, df_movies, df_links, df_tags):
         self.df_movies = df_movies
         self.df_links = df_links
