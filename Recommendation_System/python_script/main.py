@@ -1,7 +1,8 @@
 import pandas as pd
 
-from movies_web_scrapper import movie_scrap
+from movies_web_scrapper import movie_scrape
 from user_CF import userBased_CF
+from movies_feature_engineering import feature_engineering
 
 # Get data from csv file
 def get_data():
@@ -23,6 +24,11 @@ def extra_movies_data():
     df_movies_detailed = scrap.run()
     return df_movies_detailed
 
+# THIS METHOD WILL ONLY WORK ONCE THE extra_movies_data() has been ran.
+def get_movies_details():
+    df_movies = pd.read_csv('data/detailed_movies.csv')
+    return df_movies
+
 # Run the User-Based CF
 def run():
     # Get data
@@ -31,7 +37,9 @@ def run():
     # userCF = userBased_CF(df_movies, df_ratings)
     # metrics = userCF.main_run_evaluate(K=50, positive_only=False, threshold=0.0)
     # print(metrics)
-    df_movies_detailed = extra_movies_data()
+    df_detailed_movies = get_movies_details()
+    features = feature_engineering(df_detailed_movies)
+    df_features = features.run()
 
 
 if __name__ == '__main__':
