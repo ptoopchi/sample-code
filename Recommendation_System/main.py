@@ -26,20 +26,33 @@ def extra_movies_data():
 
 # THIS METHOD WILL ONLY WORK ONCE THE extra_movies_data() has been ran.
 def get_movies_details():
-    df_movies = pd.read_csv('data/detailed_movies.csv')
+    df_movies = pd.read_csv('data/detailed_movies_features.csv')
     return df_movies
 
-# Run the User-Based CF
 def run():
+    print("Running...")
+    print("Get Data...")
     # Get data
-    # df_movies, df_ratings = get_data()
+    df_movies, df_ratings = get_data()
+    # Gets DF with movie features
+    df_movies_features = get_movies_details_features()
+    # Gets group by DF of ratings for each user
+    df_user_content = pd.merge(df_ratings, df_movies_features, on='movieId')
+    df_user_content = df_user_content.groupby(['userId'])
+    # Gets dataframe of the unique movies in DF
+    movies = df_movies_features[df_movies_features.columns.difference(['movieId', 'title'])]
+
     # Run user-based CF class
+    # print("Starting CF RS...")
     # userCF = userBased_CF(df_movies, df_ratings)
     # metrics = userCF.main_run_evaluate(K=50, positive_only=False, threshold=0.0)
     # print(metrics)
-    df_detailed_movies = get_movies_details()
-    features = feature_engineering(df_detailed_movies)
-    df_features = features.run()
+
+    print("Starting Content Based RS...")
+    # Content Based
+    content = content_based(df_movies_features, df_ratings, df_user_content, movies)
+    model = SVR(C=1.5)
+    print(content.model_evaluate(model))
 
 
 if __name__ == '__main__':
