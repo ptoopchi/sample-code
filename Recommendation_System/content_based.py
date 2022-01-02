@@ -51,7 +51,7 @@ class content_based:
         preds = model.predict(self.movies)
         # Return predictions
         data = {'userId': ([user_id] * len(self.df_movies_features['movieId'].tolist())),
-                'movieId': self.df_movies_features['movieId'].tolist(), 'prediction': preds}
+                'movieId': self.df_movies_features['movieId'].tolist(), 'prediction_content': preds}
         return pd.DataFrame(data)
 
     # Create Predictions for every user

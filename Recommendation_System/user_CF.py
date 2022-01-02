@@ -54,19 +54,16 @@ class userBased_CF:
             # Selects the top N movies
             return recommend_items.head(K)
 
-    # Base Method for Evaluations
-    def base_score_CF(self, target_user, N=100):
+    # Calculates the MSE score for a single user
+    def MSE(self, target_user, N=100):
         # Get dataframe of Movies already watched by user
         movie_list = self.df_ratings[self.df_ratings['userId'] == target_user][['movieId', 'rating']]
         # Get Predictions
         predictions = self.create_all_recommendations(target_user, N)
         # Create complete dataframe
         complete_df = movie_list.merge(predictions, left_on='movieId', right_on='movieId')
-        return complete_df.sort_values(by=['prediction_userCF'], ascending=False)
+        complete_df = complete_df.sort_values(by=['prediction_userCF'], ascending=False)
 
-    # Calculates the MSE score for a single user
-    def MSE(self, target_user):
-        complete_df = self.base_score_CF(target_user)
         return mean_squared_error(complete_df['rating'].tolist(), complete_df['prediction_userCF'].tolist(),
                                   squared=True)
 

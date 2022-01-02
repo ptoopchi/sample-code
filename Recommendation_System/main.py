@@ -1,9 +1,6 @@
 import pandas as pd
-
-from content_based import content_based
 from data_process.movies_web_scrapper import movie_scrape
-from user_CF import userBased_CF
-from sklearn.svm import SVR
+from hybrid_model import hybrid
 
 
 # Get data from CSV file
@@ -40,7 +37,7 @@ def get_movies_details_features():
     return df_movies
 
 
-# Run the User-Based CF
+# Run the model
 def run():
     print("Getting Data...")
     # Get data
@@ -48,16 +45,9 @@ def run():
     # Gets DF with movie features
     df_movies_features = get_movies_details_features()
 
-    print("Starting CF RS...")
-    # Run user-based CF class
-    userCF = userBased_CF(df_movies, df_ratings)
-    print("Average MSE:", userCF.average_mse())
-
-    print("Starting Content Based RS...")
-    # Run Content Based RS
-    content = content_based(df_movies_features, df_ratings)
-    model = SVR(C=1.5)
-    print("Average MSE", content.model_evaluate(model))
+    print("Starting Hybrid Model...")
+    model = hybrid(df_movies, df_ratings, df_movies_features)
+    print(model.hybrid_evaluate())
 
 
 if __name__ == '__main__':
