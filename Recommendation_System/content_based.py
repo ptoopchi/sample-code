@@ -7,11 +7,14 @@ import sys
 
 
 class content_based:
-    def __init__(self, df_movies_features, df_ratings, df_user_content, movies):
+    def __init__(self, df_movies_features, df_ratings):
         self.df_movies_features = df_movies_features
         self.df_ratings = df_ratings
-        self.df_user_content = df_user_content
-        self.movies = movies
+        # Gets group by DF of ratings for each user
+        self.df_user_content = pd.merge(df_ratings, df_movies_features, on='movieId')
+        self.df_user_content = self.df_user_content.groupby(['userId'])
+        # Gets dataframe of the unique movies in DF
+        self.movies = df_movies_features[df_movies_features.columns.difference(['movieId', 'title'])]
 
     # Evaluates the models MSE Score
     # Used for model testing
@@ -30,10 +33,10 @@ class content_based:
             preds = model.predict(X_test)
             mse_score.append(mean_squared_error(y_test, preds))
             # Updating Progress
+            counter += 1
             sys.stdout.write('\rEvaluated Model for user: ' + str(counter) + ' out of ' + str(max_users))
             sys.stdout.flush()
-            counter += 1
-        print("") # Corrects the the last print of the sys
+        print("")  # Corrects the the last print of the sys
         return mean(mse_score)
 
     # Creates movie predictions for selected user
@@ -57,10 +60,10 @@ class content_based:
         counter = 0
         max_users = len(self.df_ratings['userId'].unique())
         for x in self.df_ratings['userId'].unique():
+            counter += 1
             all_predictions.append(self.create_user_predictions(x))
             # Updating Progress
             sys.stdout.write('\rCreating Predictions for user: ' + str(counter) + ' out of ' + str(max_users))
             sys.stdout.flush()
-            counter += 1
         print("")  # Corrects the the last print of the sys
         return pd.concat(all_predictions)
