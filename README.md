@@ -8,3 +8,4 @@ This Repository Contains:
 4. [Two Input Neural Network](https://github.com/ptoopchi/sample-code/tree/main/PyTorch_2NN) - Combines numerical and text features (two inputs) to create an LSTM neural network to detect whether a user is a malicious bot
 5. [NLP Data Visualisation](https://github.com/ptoopchi/sample-code/blob/main/NLP_Data_Visualisation.ipynb) - Data Visualisation to compare the difference between human Twitter users and bot Twitter users
 6. [Hybrid Recommendation System](https://github.com/ptoopchi/sample-code/tree/main/Recommendation_System) - A hybrid recommendation system recommends different movies to watch based on users history. This model combines a content-based model and a user-based collaborative filtering model.
+7. [Emotion Detection](https://github.com/ptoopchi/sample-code/tree/main/Emotion_Detection) - Detects a person's emotion based on the way they are talking
