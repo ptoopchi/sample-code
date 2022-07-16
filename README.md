@@ -1,5 +1,5 @@
 # Pouria Toopchi's Code
-I am a Masters Graduate in Artificial Intelligence and am currently searching for a Machine Learning Engineer/Data Scientist role. Above I have composed some examples to showcase my coding ability.
+I am a Masters Graduate in Artificial Intelligence and I am currently a Data Scientist. Above I have composed some examples to showcase my coding ability.
 
 This Repository Contains:
 1. [Genetic Algorithm](https://github.com/ptoopchi/sample-code/tree/main/Genetic_Algorithm/src) - Genetic Algorithm with uniform crossover in custom 2D landscape
